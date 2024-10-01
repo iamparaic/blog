@@ -6,8 +6,9 @@ import os
 SECRET_KEY = os.getenv('SECRET_KEY', 'not-set')
 
 # When deploying, set in the environment to the PostgreSQL URL
-SQLALCHEMY_DATABASE_URI = os.getenv('postgresql://paraic:rNYLVX9G830WcU756ixqzlHeoyJCn7N4@dpg-crsk4k68ii6s73ee7lm0-a/blog_e6gg')
-if SQLALCHEMY_DATABASE_URI is None:
-    raise ValueError("DATABASE_URL is not set")
-# When you use Flask's default settings, the application looks for the instance folder to store files
-# that should persist across different runs of the application, but are specific to the instance (like your SQLite database).
+#connection_string = 'postgresql://postgres:ta5tyburg3r@localhost:5432/db1'
+connection_string = 'postgresql://paraic:GFXIjfYjzWnikSUQcDARpAD8R6vl2mP2@dpg-cru5d1m8ii6s73air950-a.oregon-postgres.render.com/blog_jclj'
+SQLALCHEMY_DATABASE_URI = os.getenv('DATABASE_URL', connection_string)
+
+#SQLALCHEMY_DATABASE_URI = os.getenv('DATABASE_URL', 'sqlite:///db.sqlite3')
+
